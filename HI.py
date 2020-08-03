@@ -5,5 +5,6 @@ if op== "喜歡":
     print("謝謝")
 elif op== "不喜歡":
     print("沒救了")
-    else
+else:
+    print("看不懂")
 

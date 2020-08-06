@@ -22,8 +22,6 @@ if False:
 else:
      print('B')
 print('C')
-"""
-
 import random
 num = random.randint(1,100)
 while True:
@@ -33,7 +31,10 @@ while True:
         break
     else:
         print("猜錯了")
-    print(num)
+    #print(num)
+"""
+
+
     
 import random
 a = 1

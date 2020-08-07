@@ -1,135 +1,58 @@
-print("*********************************")
-print("*********歡迎來到團隊隊餐廳*******")
-print("*********************************")
-print("*********************************")
-print("************以下是菜單************")
-
-
+menu_list =[
+{"id": 1, "name":"1.漢堡","price":70,"$":"元"},
+{"id": 2, "name":"2.薯條", "price": 45,"$":"元"},
+      {"id": 3, "name":"3.雪碧", "price": 30,"$":"元"},
+      {"id": 4, "name":"4.薯餅", "price": 45,"$":"元"},
+      {"id": 5, "name":"5.熱狗","price":35,"$":"元"},
+       {"id": 6, "name":"6.洋蔥圈", "price": 45,"$":"元"},
+       {"id": 7, "name":"7.可樂", "price": 30,"$":"元"}]
+Order_list = []
+print('==========================歡迎光臨本餐廳,祝您用餐愉快====================================')
+print('今日菜單:')
+for menu in menu_list:
+   print(menu.get('name'),menu.get('price'),menu.get('$'))
 while True:
-    print("A.漢堡 Hamburger==>$50")
-    print("B.")
-    print("C.")
-    print("D.")
-    print("E.")
-    print("F.")
-    print("G.")
-    print("H.")
-    print("I.")
-    print("J.")
-    
-    
-    print("要結帳請按10")
-    sel = input("請輸入菜單選項:  ")
-    if sel=="10":
-        break
-    
-    elif sel=="A": 
-        dic = input("請輸入數量: ")
-        print("點了漢堡")
-        print("1. 1個")
-        print("2. 2個")
-        print("3. 3個")
-        print("4. 4個")
-        print("5. 5個")
-        print("6. 6個")
-        print("7. 7個")
-        print("8. 8個")
-        print("9. 9個")
-        print("10. 10個")
-        food="漢堡 Hamburger"
-        if dic=="1":
-            print("1個",food*1)
-        elif dic=="2":
-            print("2個",food)
-        elif dic=="3":
-            print("3個",food)
-        elif dic=="4":
-            print("4個",food)  
-        elif dic=="5":
-            print("5個",food)
-        elif dic=="6":
-            print("6個",food)
-        elif dic=="7":
-            print("7個",food)
-        elif dic=="8":
-            print("8個",food)
-        elif dic=="9":
-            print("9個",food)
-        elif dic=="10":
-            print("10個",food)
-
-
-
-
-
-
-
-
-'''
-import os.path
-
-if not os.path.isfile("mydictionary.txt"):
-    fo = open("mydictionary.txt","w")
-    print("new file")
-else:
-    fo = open("mydictionary.txt","r")
-    print("old file")
-
-for row in fo.readlines():
-    data = row.split(":")
-
-    key = data[0]
-    value = data[1]
-    value = value.strip()
-
-    dic[key]=value
-print(dic)
-
-fo.close()
-
-
-while True:
-    print("1.建立字彙")
-    print("2.列印全部資料")
-    print("3.英翻中")
-    print("4.中翻英")
-    print("5.學習測驗")
-    print("6.離開系統")
-    sel = input("請輸入功能選項:  ")
-    if sel=="1":
-        en = input("輸入英文單字:")
-        coc = input("輸入中文解釋:")
-        dic[en]=coc
-
-        fo = open("mydictionary.txt","w")
-        for k,v in dic.items():
-            fo.write(k)
-            fo.write(":")
-            fo.write(v)  
-            fo.write("\n")
-        fo.close()
-
-    elif sel=="2":
-        for k,v in dic.items():
-            print(k,":",v)
-    elif sel=="3":
-        search = input("搜尋英文:")
-        print(dic[search])
-    elif sel=="4":
-        s = input("搜尋中文:")
-        for k,v in dic.items():
-            if s==v:
-                print(k)
-    elif sel=="5":
-        score=0
-        for k,v in dic.items():
-           print(v,":")
-           ans = input("請輸入你的答案:")
-           if ans==k:
-               print("恭喜答對")
-               score = score +1
-        print("你的分數:",score)
-
-    elif sel =="6":
-        break
-    '''
+   print('='*50)
+   print("1.點餐\n2.取消點餐\n3.確認菜單\n4.結帳")
+   server = int(input("請選擇服務:"))
+   if server == 1:
+       while True:
+           menu_add = input("請輸入菜名編號或輸入Y结束點菜:")
+           if menu_add != 'Y':
+               for m in menu_list:
+                   if m.get('id')== int(menu_add):
+                       Order_list.append(m)
+                       break
+           else:
+               print('==================已點菜=====================')
+               total_price = 0
+               for order in Order_list:
+                   print(order.get('name'),order.get('price'),order.get('$'))
+                   total_price += int(order.get('price'))
+               print('                           小計:{}元'.format(total_price))
+               break
+   elif server == 2:      
+       menu_del = input("請輸入要取消的菜名:")
+       Order_list.remove(order)
+       print('==================已點菜=====================')
+       total_price = 0
+       for order in Order_list:
+           print(order.get('name'),order.get('price'),order.get('$'))
+           total_price += int(order.get('price'))
+       print('                                   小計:{}元'.format(total_price))
+   elif server == 3:
+       print('==================已點菜=====================')
+       total_price = 0
+       for order in Order_list:
+           print(order.get('name'),order.get('price'),order.get('$'))
+           total_price += int(order.get('price'))
+       print('                           小計:{}元'.format(total_price))
+   elif server == 4:
+       print('=================您的消費菜單=======================')
+       total_price = 0
+       for order in Order_list:
+           print(order.get('name'),order.get('price'),order.get('$'))
+           total_price += int(order.get('price'))
+       print('          總計:{}元'.format(total_price))
+       print('==================謝謝光臨，歡迎您再次光臨本店!=====================')
+       break
